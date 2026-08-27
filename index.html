@@ -97,8 +97,7 @@
 </section>
 </main>
 
-<footer><span>© <span id="year"></span> IDEAL DIGITAL PHOTOGRAPHY</span><a href="#admin">Admin</a></footer>
-
+<a href="#admin" id="adminLink" style="display:none;">Admin</a>
 <section id="admin" class="admin">
   <div class="admin-box">
     <div class="admin-head"><div><span class="eyebrow">PRIVATE AREA</span><h2>Website Admin</h2></div><button onclick="location.hash=''">×</button></div>
@@ -108,5 +107,19 @@
   </div>
 </section>
 <script src="script.js"></script>
+  
+<script>
+const ADMIN_EMAIL = "js98504978@gmail.com" ;
+
+firebase.auth().onAuthStateChanged(function(user) {
+    const adminLink = document.getElementById("adminLink");
+
+    if (user && user.email === ADMIN_EMAIL) {
+        adminLink.style.display = "inline";
+    } else {
+        adminLink.style.display = "none";
+    }
+});
+</script>
 </body>
 </html>
