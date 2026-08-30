@@ -108,18 +108,26 @@
 </section>
 <script src="script.js"></script>
   
-<script>
-const ADMIN_EMAIL = "idealdigital123@gmail.com" ;
+<script>S
+
+const ADMIN_EMAIL = "idealdigital123@gmail.com";
 
 firebase.auth().onAuthStateChanged(function(user) {
-    const adminLink = document.getElementById("adminLink");
+  const adminLink = document.getElementById("adminLink");
 
-    if (user && user.email === ADMIN_EMAIL) {
-        adminLink.style.display = "inline";
-    } else {
-        adminLink.style.display = "none";
-    }
+  if (!adminLink) return;
+
+  if (
+    user &&
+    user.email &&
+    user.email.trim().toLowerCase() === ADMIN_EMAIL.trim().toLowerCase()
+  ) {
+    adminLink.style.display = "inline";
+  } else {
+    adminLink.style.display = "none";
+  }
 });
 </script>
+
 </body>
 </html>
